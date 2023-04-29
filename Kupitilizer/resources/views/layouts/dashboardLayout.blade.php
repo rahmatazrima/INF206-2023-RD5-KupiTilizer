@@ -72,6 +72,15 @@
                     <span class="ml-3">Manage Users</span>
                     </a>
                 </li>
+                <hr>
+                <li>
+                    <a href="/" class="flex items-center p-2 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="lex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                    </svg>
+                    <span class="ml-3">Kembali ke Home</span>
+                    </a>
+                </li>
                 <li>
                     <form method="POST" action="{{url('logout')}}">
                         @csrf
