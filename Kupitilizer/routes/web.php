@@ -25,6 +25,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+
+//For view only
+Route::get('/statuspenjemputanuser', function () {
+    return view('statuspenjemputanuser');
+})->name('home');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
