@@ -67,9 +67,12 @@
                         <p class="">Rp{{$totalBelanja}}</p>
                     </div>
                 </div>
-                <div>
-                    <button class="bg-leaf hover:bg-green-900 p-3 w-full rounded-xl font-bold text-white" type="submit">Beli</button>
-                </div>
+                <form action="/pembelian" method="POST">
+                    @csrf
+                    <div>
+                        <button type="submit" class="bg-leaf hover:bg-green-900 p-3 w-full rounded-xl font-bold text-white" type="submit">Beli</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

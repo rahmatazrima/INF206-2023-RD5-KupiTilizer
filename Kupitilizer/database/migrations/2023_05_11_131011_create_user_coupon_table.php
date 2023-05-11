@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pembelians', function (Blueprint $table) {
-            $table->string('id')->unique();
+        Schema::create('user_coupon', function (Blueprint $table) {
             $table->char('user_id', 13);
-            $table->char('kurir_id', 13)->nullable();
-            $table->string('alamat')->nullable();
-            $table->integer('total_belanja');
-            $table->string('status')->default('waiting');
-            $table->timestamps();
+            $table->string('coupon_id');
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pembelians');
+        Schema::dropIfExists('user_coupon');
     }
 };

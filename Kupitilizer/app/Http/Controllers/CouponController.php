@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Coupon;
+use App\Models\MyCoupon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use \Carbon\Carbon;
 
@@ -91,6 +93,34 @@ class CouponController extends Controller
         
         //kembali ke laman coupon dengan alert succes
         return redirect('/admin/coupon')->with('success', 'Data coupon berhasil diedit!');
+    }
+
+    public function halamanKupon(){
+        $coupons=DB::table('coupons')->get();
+        return view('coupon',['coupons'=>$coupons]);
+    }
+
+    public function MyCoupon(){
+        $coupons=DB::table('my_coupons')->join('coupons', 'coupons.id', '=', 'my_coupons.coupon_id')->get();
+        return view('mycoupon',['coupons'=>$coupons]);
+    }
+
+    public function redeem(Request $request){
+        //dd($request);
+        MyCoupon::create([
+            'user_id'=>Auth::user()->id,
+            'coupon_id' => $request->kodeCoupon
+        ]);
+        $poinUser = DB::table('users')->where('id', Auth::user()->id)->get(['poin']);
+        //dd($poinUser);
+        $poinPakai = DB::table('coupons')->where('id', $request->kodeCoupon)->get(['poin']);
+        // dd($poinPakai);
+        DB::table('users')->where('id', Auth::user()->id)
+            ->update([
+            'poin' => $poinUser[0]->poin - $poinPakai[0]->poin
+            ]);   
+            //dd($poinUser);
+        return redirect()->back()->with("success","Coupon berhasil ditukarkan");
     }
 
 };

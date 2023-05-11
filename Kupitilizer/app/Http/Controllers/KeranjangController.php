@@ -16,7 +16,7 @@ class KeranjangController extends Controller
     public function index()
     {
         // $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
-        $keranjang = DB::table('keranjangs')->join('products', 'keranjangs.product_id', '=', 'products.id')->get();
+        $keranjang = DB::table('keranjangs')->join('products', 'keranjangs.product_id', '=', 'products.id')->where('user_id', Auth::user()->id)->get();
         $totalBelanja = 0;
         foreach($keranjang as $item){
             $totalBelanja+= ($item->jumlah * $item->harga);
