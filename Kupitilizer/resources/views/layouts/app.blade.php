@@ -31,6 +31,23 @@
         </div>
         @endif
 
+        @if(session()->has('success'))
+        <div id="error-banner" tabindex="-1" class="fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-4 -translate-x-1/2 bg-white border border-gray-100 rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6 dark:bg-gray-700 dark:border-gray-600">
+            <div class="flex flex-col items-start mb-3 mr-4 md:items-center md:flex-row md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z" />
+                </svg>
+                <p class="flex items-center py-2 mx-5 text-xl font-bold text-gray-500 dark:text-gray-400">{{session('success')}}</p>
+            </div>
+            <div class="flex items-center flex-shrink-0">
+                <button data-dismiss-target="#error-banner" type="button" class="absolute top-2.5 right-2.5 md:relative md:top-auto md:right-auto flex-shrink-0 inline-flex justify-center items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <svg aria-hidden="true" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Close banner</span>
+                </button>
+            </div>
+        </div>
+        @endif
+
         <nav class="bg-dark py-5">
             <div class="flex flex-wrap items-center justify-around mx-auto p-4 sm:p-0 sm:mx-2">
                 <a href="{{url('/')}}" class="flex items-center">
@@ -58,6 +75,9 @@
                                 </li>
                                 <li>
                                     <a href="/statuspermintaan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Status Permintaan</a>
+                                </li>
+                                <li>
+                                    <a href="/keranjang" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Keranjang</a>
                                 </li>
                                 @else
                                 <li>

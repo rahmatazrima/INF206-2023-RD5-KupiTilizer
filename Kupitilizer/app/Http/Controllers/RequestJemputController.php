@@ -67,10 +67,10 @@ class RequestJemputController extends Controller
     /**
      * 
      */
-    public function declineRequest($id)
+    public function doneRequest($id)
     {
         DB::table('request_jemputs')->where('id', $id)->update([
-            'status' => 'decline'
+            'status' => 'done'
         ]);
         return redirect()->back();
     }

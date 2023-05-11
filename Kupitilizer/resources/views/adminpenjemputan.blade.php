@@ -55,12 +55,10 @@
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex items-center">
-                            @if($item->status == "waiting")
+                            @if($item->status == "waiting" || $item->status == "process")
                             <div class="h-2.5 w-2.5 rounded-full bg-yellow-400 mr-2"></div>
-                            @elseif($item->status == "accepted")
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             @else
-                            <div class="h-2.5 w-2.5 rounded-full bg-red-400 mr-2"></div>
+                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
                             @endif
                             <span class="capitalize">{{$item->status}}</span>
                         </div>
@@ -69,14 +67,11 @@
                         <form action="/<?php echo Auth::user()->role?>/requestjemput/detail/{{$item->id}}" method="get" class='d-inline'>
                             <button type="submit" class="bg-blue-300 text-white font-bold rounded-md px-4 py-2">Detail</button>
                         </form>
-                        @if($item->status == "waiting")
-                        <form action="/<?php echo Auth::user()->role?>/requestjemput/accept/{{$item->id}}" method="get" class='d-inline'>
-                            <button type="submit" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Accept</button>
-                        </form>
-                        <form action="/<?php echo Auth::user()->role?>/requestjemput/decline/{{$item->id}}" method="get" class='d-inline'>
-                            <button type="submit" class="bg-red-400 text-white font-bold rounded-md px-4 py-2">Decline</button>
-                        </form>
-                        @endif                  
+                        @if($item->status == "process")
+                        <form action="/<?php echo Auth::user()->role?>/requestjemput/done/{{$item->id}}" method="get" class='d-inline'>
+                            <button type="submit" class="bg-leaf text-white font-bold rounded-md px-4 py-2">Done</button>
+                        </form>    
+                        @endif
                     </td>
                 </tr>
                 @endforeach

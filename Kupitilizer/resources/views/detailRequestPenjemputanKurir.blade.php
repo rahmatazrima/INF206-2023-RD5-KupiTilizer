@@ -1,4 +1,4 @@
-@extends('layouts.dashboardLayout')
+@extends('layouts.dashboardKurirLayout')
 
 @section('breadcrumb')
 <li>
@@ -66,7 +66,7 @@
             <input type="text" id="disabled-input" aria-label="disabled input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $data->waktu_jemput }}" disabled readonly>
         </div>
         @if($data->status == "waiting" || $data->status == "process")
-        <div class="flex p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-200 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+        <div class="flex p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-200 " role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -75,10 +75,11 @@
             </div>
         </div>
         @else
-        <div class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-yellow-300" role="alert">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-            </svg>
+        <div class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 " role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+
             <div class="ml-2">
                 <span class="font-bold text-md capitalize">{{ $data->status }}</span>
             </div>
@@ -86,7 +87,7 @@
         @endif
 
         @if($data->kurir_id != NULL)
-        <div class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+        <div class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 " role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
             </svg>
@@ -97,4 +98,5 @@
         @endif
     </div>
 </div>
+
 @endsection
